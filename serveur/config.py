@@ -7,8 +7,10 @@ DATA_DIR = Path(os.environ.get("CATALOGUE_DATA_DIR") or RACINE / "data")
 DB_PATH = DATA_DIR / "catalogue.db"
 SAUVEGARDES_DIR = DATA_DIR / "sauvegardes"
 DIST_DIR = RACINE / "dist"
-HOST = os.environ.get("CATALOGUE_HOST", "127.0.0.1")
-PORT = int(os.environ.get("CATALOGUE_PORT", "5174"))
+# Hébergeur (Render, etc.) : il fournit la variable PORT et attend une écoute sur 0.0.0.0.
+# En local : 127.0.0.1 et le port 5174, sauf si CATALOGUE_HOST / CATALOGUE_PORT sont définis.
+HOST = os.environ.get("CATALOGUE_HOST") or ("0.0.0.0" if os.environ.get("PORT") else "127.0.0.1")
+PORT = int(os.environ.get("CATALOGUE_PORT") or os.environ.get("PORT") or "5174")
 # Dossier des PDF (facultatif) : sans lui, aucun lien « Ouvrir le document » n'est proposé.
 DOCUMENTS_DIR = Path(os.environ["CATALOGUE_DOCUMENTS_DIR"]) if os.environ.get("CATALOGUE_DOCUMENTS_DIR") else None
 SAUVEGARDES_A_GARDER = 10
