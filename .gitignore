@@ -1,0 +1,9 @@
+node_modules/
+.env
+.env.local
+__pycache__/
+*.pyc
+# Données : jamais versionnées (base locale et sauvegardes)
+data/*
+!data/.gitkeep
+!data/catalogue.db

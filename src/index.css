@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { @apply bg-papier text-encre antialiased; accent-color: #166534; }
+  body { @apply min-h-screen font-sans; }
+  ::selection { @apply bg-vert text-white; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-vert; }
+}
+
+@layer components {
+  .clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .champ { @apply w-full rounded-md border border-contour bg-white px-3 py-2 text-sm text-encre placeholder:text-encre/65 hover:border-vert focus:border-vert focus:outline-none focus:ring-2 focus:ring-vert/30; }
+  .btn { @apply inline-flex items-center justify-center gap-1.5 rounded-md border px-3 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-40; }
+  .btn-plein { @apply border-vert bg-vert text-white hover:border-vert-fonce hover:bg-vert-fonce; }
+  .btn-contour { @apply border-vert/60 bg-white text-vert hover:bg-vert-clair hover:text-vert-fonce disabled:hover:bg-white; }
+}
